@@ -1,0 +1,9 @@
+# Secrets
+.env_local
+
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfplan
+.terraform/
+.crash/

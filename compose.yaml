@@ -1,0 +1,24 @@
+services:
+  terraform:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: terraform:latest
+    # image: debian:bookworm-slim ## image used for building Dockerfile proceding step by step when debugging
+    container_name: terraform
+    restart: on-failure
+    env_file:
+      - .env_local
+    working_dir: /workspace
+    volumes:
+      - ./terraform-data:/workspace
+    networks:
+      - terraform_network
+    tty: true
+    stdin_open: true
+    command: [ "/bin/bash" ]
+
+networks:
+  terraform_network:
+    name: terraform_network
+    driver: bridge

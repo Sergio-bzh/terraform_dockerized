@@ -13,12 +13,12 @@ services:
     volumes:
       - ./terraform-data:/workspace
     networks:
-      - terraform_network
+      - dockerized_terraform
     tty: true
     stdin_open: true
     command: [ "/bin/bash" ]
 
 networks:
-  terraform_network:
-    name: terraform_network
+  dockerized_terraform:
+    name: dockerized_terraform
     driver: bridge
